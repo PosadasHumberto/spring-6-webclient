@@ -93,7 +93,7 @@ class BeerClientImplTest {
         BeerDTO beerToSave = BeerDTO.builder()
                 .beerName("BeerToSave")
                 .beerStyle("IPA")
-                .price(BigDecimal.TEN)
+                .price(new BigDecimal("10.99"))
                 .upc("4546165")
                 .quantityOnHand(15)
                 .build();
@@ -101,7 +101,7 @@ class BeerClientImplTest {
         AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
         beerClient.createBeer(beerToSave).subscribe(beerDTO -> {
-            System.out.println(beerDTO.getBeerName());
+            System.out.println(beerDTO.toString());
             atomicBoolean.set(true);
         });
         await().untilTrue(atomicBoolean);

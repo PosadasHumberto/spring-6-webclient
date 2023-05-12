@@ -62,7 +62,7 @@ public class BeerClientImpl implements BeerClient {
 
     @Override
     public Mono<BeerDTO> createBeer(BeerDTO beerDTO) {
-        return webClient.post().uri(BEER_PATH_ID, beerDTO.getId())
+        return webClient.post().uri(BEER_PATH)
                 .body(Mono.just(beerDTO), BeerDTO.class)
                 .retrieve()
                 .toBodilessEntity()
